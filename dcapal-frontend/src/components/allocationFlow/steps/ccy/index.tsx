@@ -8,7 +8,7 @@ import {
 } from "@components/allocationFlow/portfolioSlice";
 import { CcyGroup } from "./ccyGroup";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/atoms/button";
 
 const priority = {
   usd: 10,
@@ -60,10 +60,10 @@ export const CcyStep = ({ ...props }) => {
         />
       </div>
       <div className="w-full mt-12 flex justify-between items-center">
-        <Button variant="link" size="link" onClick={onClickBack}>
+        <Button variant="link" handleClick={onClickBack}>
           {t("common.goBack")}
         </Button>
-        <Button onClick={onClickNext} disabled={selected.length === 0}>
+        <Button handleClick={onClickNext} disabled={selected.length === 0}>
           {t("common.next")}
         </Button>
       </div>

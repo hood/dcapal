@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { InputText } from "@components/core/inputText";
+import { InputText } from "@/components/ui/atoms/input-text/input-text";
 import { useDispatch } from "react-redux";
 import {
   deletePortfolio,
@@ -12,8 +12,8 @@ import { Step, setAllocationFlowStep } from "@app/appSlice";
 
 import EDIT_SVG from "@images/icons/edit.svg";
 import CLOSE_SVG from "@images/icons/close-menu.svg";
-import { Button } from "@/components/ui/button";
 import { useSyncPortfolios } from "@hooks/useSyncPortfolios";
+import { Button } from "../../../ui/atoms/button";
 
 const orderByWeightDesc = (a, b) => b.weight - a.weight;
 
@@ -112,12 +112,12 @@ export const PortfolioCard = ({ id, name, ccy, totalAmount, assets }) => {
             <p className="pl-1 text-sm font-light">{t("common.name")}</p>
             <InputText
               value={newName}
-              onChange={setNewName}
+              handleChange={(e) => setNewName(e.target.value)}
               isValid={newName}
             />
           </div>
           <div className="w-full mt-5 flex justify-between items-center">
-            <Button variant="link" size="sm" onClick={onClickDelete}>
+            <Button variant="link" size="sm" handleClick={onClickDelete}>
               {t("portfoliosStep.deletePortfolio")}
             </Button>
             <div className="flex gap-1">
@@ -125,11 +125,11 @@ export const PortfolioCard = ({ id, name, ccy, totalAmount, assets }) => {
                 variant="outline"
                 size="sm"
                 disabled={!newName}
-                onClick={onClickDuplicate}
+                handleClick={onClickDuplicate}
               >
                 {t("common.duplicate")}
               </Button>
-              <Button size="sm" disabled={!newName} onClick={onClickSave}>
+              <Button size="sm" disabled={!newName} handleClick={onClickSave}>
                 {t("common.save")}
               </Button>
             </div>

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setAllocationFlowStep, setPfolioFile, Step } from "@app/appSlice";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/atoms/button";
 
 export const LaunchBtn = () => {
   const inputPfolio = useRef(null);

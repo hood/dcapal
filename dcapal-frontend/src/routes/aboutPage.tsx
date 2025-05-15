@@ -4,46 +4,48 @@ import GitHubButton from "react-github-btn";
 import { Trans, useTranslation } from "react-i18next";
 import { ContainerPage } from "./containerPage";
 
-import ME from "../../images/headers/me.jpg";
-import GITHUB from "../../images/social/github.svg";
-import LINKEDIN from "../../images/social/linkedin.svg";
-import TELEGRAM from "../../images/social/telegram.svg";
-import TWITTER from "../../images/social/twitter.svg";
-import YOUTUBE from "../../images/social/youtube.svg";
+// import ME from "../../images/headers/me.jpg";
+// import GITHUB from "../../images/social/github.svg";
+// import LINKEDIN from "../../images/social/linkedin.svg";
+// import TELEGRAM from "../../images/social/telegram.svg";
+// import TWITTER from "../../images/social/twitter.svg";
+// import YOUTUBE from "../../images/social/youtube.svg";
 
-const SocialBar = () => {
-  return (
-    <div className="flex gap-1 items-center justify-center">
-      <a href="https://github.com/leonardoarcari">
-        <img
-          className="w-full max-w-[1.75rem] mr-[2px]"
-          alt="Github logo"
-          src={GITHUB}
-        />
-      </a>
-      <a href="https://www.linkedin.com/in/leonardoarcari/">
-        <img
-          className="w-full max-w-[2rem]"
-          alt="Linkedin logo"
-          src={LINKEDIN}
-        />
-      </a>
-      <a href="https://twitter.com/arcari_leonardo">
-        <img className="w-full max-w-[2rem]" alt="Twitter logo" src={TWITTER} />
-      </a>
-      <a href="https://www.youtube.com/@leonardoarcari3011">
-        <img className="w-full max-w-[2rem]" alt="Youtube logo" src={YOUTUBE} />
-      </a>
-      <a href="https://t.me/leonardoarcari">
-        <img
-          className="w-full max-w-[2rem]"
-          alt="Telegram logo"
-          src={TELEGRAM}
-        />
-      </a>
-    </div>
-  );
-};
+const SocialBar = () => "x";
+
+// const SocialBar = () => {
+//   return (
+//     <div className="flex gap-1 items-center justify-center">
+//       <a href="https://github.com/leonardoarcari">
+//         <img
+//           className="w-full max-w-[1.75rem] mr-[2px]"
+//           alt="Github logo"
+//           src={GITHUB}
+//         />
+//       </a>
+//       <a href="https://www.linkedin.com/in/leonardoarcari/">
+//         <img
+//           className="w-full max-w-[2rem]"
+//           alt="Linkedin logo"
+//           src={LINKEDIN}
+//         />
+//       </a>
+//       <a href="https://twitter.com/arcari_leonardo">
+//         <img className="w-full max-w-[2rem]" alt="Twitter logo" src={TWITTER} />
+//       </a>
+//       <a href="https://www.youtube.com/@leonardoarcari3011">
+//         <img className="w-full max-w-[2rem]" alt="Youtube logo" src={YOUTUBE} />
+//       </a>
+//       <a href="https://t.me/leonardoarcari">
+//         <img
+//           className="w-full max-w-[2rem]"
+//           alt="Telegram logo"
+//           src={TELEGRAM}
+//         />
+//       </a>
+//     </div>
+//   );
+// };
 
 export default function AboutPage() {
   const { t } = useTranslation();
@@ -61,7 +63,7 @@ export default function AboutPage() {
             <img
               className="w-full max-w-[15rem] rounded-full border border-neutral-700/20 shadow-md"
               alt="Social logo"
-              src={ME}
+              src={"ME"}
             />
             <SocialBar />
           </div>

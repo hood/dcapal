@@ -3,16 +3,18 @@ import react from "@vitejs/plugin-react";
 import { fileURLToPath } from "node:url";
 import wasm from "vite-plugin-wasm";
 import topLevelAwait from "vite-plugin-top-level-await";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [
     react(),
+    tailwindcss(),
     // wasm(),
     // topLevelAwait({
-      // // The export name of top-level await promise for each chunk module
-      // promiseExportName: "__devtla",
-      // // The function to generate import names of top-level await promise in each chunk module
-      // promiseImportName: (i) => `__devtla_${i}`,
+    // // The export name of top-level await promise for each chunk module
+    // promiseExportName: "__devtla",
+    // // The function to generate import names of top-level await promise in each chunk module
+    // promiseImportName: (i) => `__devtla_${i}`,
     // }),
   ],
   resolve: {
@@ -36,10 +38,10 @@ export default defineConfig({
       plugins: [
         // wasm(),
         // topLevelAwait({
-          // // The export name of top-level await promise for each chunk module
-          // promiseExportName: "__tla",
-          // // The function to generate import names of top-level await promise in each chunk module
-          // promiseImportName: (i) => `__tla_${i}`,
+        // // The export name of top-level await promise for each chunk module
+        // promiseExportName: "__tla",
+        // // The function to generate import names of top-level await promise in each chunk module
+        // promiseImportName: (i) => `__tla_${i}`,
         // }),
       ],
     },
@@ -52,10 +54,10 @@ export default defineConfig({
     plugins: () => [
       // wasm(),
       // topLevelAwait({
-        // The export name of top-level await promise for each chunk module
-        // promiseExportName: "__workertla",
-        // // The function to generate import names of top-level await promise in each chunk module
-        // promiseImportName: (i) => `____workertla_${i}`,
+      // The export name of top-level await promise for each chunk module
+      // promiseExportName: "__workertla",
+      // // The function to generate import names of top-level await promise in each chunk module
+      // promiseImportName: (i) => `____workertla_${i}`,
       // }),
     ],
   },

@@ -5,7 +5,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { spawn, Thread, Worker } from "threads";
 
 import { replacer } from "@utils/index.js";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/atoms/button";
 import { setAllocationFlowStep, Step } from "@app/appSlice";
 import { InputNumber, InputNumberType } from "@components/core/inputNumber";
 import {
@@ -61,12 +61,11 @@ export const InvestStep = ({
     if (totalAmount === 0) return;
 
     const launchSolver = async () => {
-      const solver = await spawn(
-        // new Worker(new URL("@workers/analyzer.js", import.meta.url), {
-        // new Worker(new URL("../../../../../workers/analyzer.js"), {
-        //   name: "wasm-analyzer-worker",
-        // })
-      );
+      const solver = await spawn();
+      // new Worker(new URL("@workers/analyzer.js", import.meta.url), {
+      // new Worker(new URL("../../../../../workers/analyzer.js"), {
+      //   name: "wasm-analyzer-worker",
+      // })
 
       const as = buildProblemInput(assets);
 
@@ -290,14 +289,14 @@ export const InvestStep = ({
       </div>
 
       <div className="w-full mt-6 flex items-center justify-between">
-        <Button variant="link" size="link" onClick={onClickGoBack}>
-          {t("common.goBack")}{" "}
+        <Button variant="link" handleClick={onClickGoBack}>
+          {t("common.goBack")}
         </Button>
         <Button
-          onClick={onClickRunAllocation}
+          handleClick={onClickRunAllocation}
           disabled={isRunAllocationDisabled}
         >
-          {t("investStep.runAllocation")}{" "}
+          {t("investStep.runAllocation")}
         </Button>
       </div>
     </div>

@@ -37,7 +37,7 @@ const MobileMenu = ({ visible, onClickTitle, toggleMenu }) => {
   };
 
   const className = classNames(
-    "absolute z-50 w-full h-dvh inset-0 flex flex-col justify-between bg-[#333333]",
+    "absolute z-50 w-full h-dvh inset-0 flex flex-col justify-between bg-slate-400",
     {
       invisible: !visible,
     }
@@ -46,13 +46,13 @@ const MobileMenu = ({ visible, onClickTitle, toggleMenu }) => {
   return (
     <div className={className}>
       <div className="w-full">
-        <div className="w-full h-14 min-h-[3.5rem] px-4 py-2 flex justify-between items-center bg-[#333333]">
+        <div className="w-full h-14 min-h-[3.5rem] px-4 py-2 flex justify-between items-center bg-slate-400">
           <div className="flex gap-x-8">
             <div
               className="text-xl font-semibold text-white"
               onClick={onClickTitle}
             >
-              <Link to={"/"}>DcaPal</Link>
+              <Link to="/">DcaPal</Link>
             </div>
           </div>
           <CloseBtn onClick={toggleMenu} />
@@ -63,21 +63,10 @@ const MobileMenu = ({ visible, onClickTitle, toggleMenu }) => {
               {t("navbar.myPortfolios")}
             </div>
           </Link>
-          <Link to={"/dashboard"} onClick={toggleMenu}>
-            <div className="w-full text-2xl font-light text-white">
-              {t("navbar.dashboard")}
-            </div>
-          </Link>
           <Link to={"/about"} onClick={toggleMenu}>
             <div className="w-full text-2xl font-light text-white">
               {" "}
               {t("navbar.about")}
-            </div>
-          </Link>
-          <Link to={"/docs"} onClick={toggleMenu}>
-            <div className="w-full text-2xl font-light text-white">
-              {" "}
-              {t("navbar.docs")}
             </div>
           </Link>
         </div>
@@ -162,27 +151,26 @@ export const NavBar = () => {
   };
 
   return (
-    <div className="w-full h-14 min-h-[3.5rem] px-4 py-2 flex justify-between items-center bg-[#333333]">
+    <div className="w-full h-14 min-h-[3.5rem] px-4 py-2 flex justify-between items-center bg-slate-400">
       <div className="flex gap-x-8">
         <div className="text-xl font-semibold text-white" onClick={onClickHome}>
           <Link to={"/"}>DcaPal</Link>
         </div>
         {!isMobile && (
           <div className="flex gap-x-5">
-            <div className="text-lg font-light text-white">
-              <Link to={"/allocate"} onClick={onClickMyPortfolios}>
-                {t("navbar.myPortfolios")}
-              </Link>
-            </div>
-            <div className="text-lg font-light text-white">
-              <Link to={"/dashboard"}>{t("navbar.dashboard")}</Link>
-            </div>
-            <div className="text-lg font-light text-white">
-              <Link to={"/about"}>{t("navbar.about")}</Link>
-            </div>
-            <div className="text-lg font-light text-white">
-              <Link to={"/docs"}>{t("navbar.docs")}</Link>
-            </div>
+            <Link
+              className="text-lg font-light text-white px-2 py-1 -mx-2 -my-1 rounded-xl hover:bg-white/10"
+              to={"/allocate"}
+              onClick={onClickMyPortfolios}
+            >
+              {t("navbar.myPortfolios")}
+            </Link>
+            <Link
+              className="text-lg font-light text-white px-2 py-1 -mx-2 -my-1 rounded-xl hover:bg-white/10"
+              to={"/about"}
+            >
+              {t("navbar.about")}
+            </Link>
           </div>
         )}
         {isMobile && (
@@ -193,7 +181,7 @@ export const NavBar = () => {
           />
         )}
       </div>
-      <div className="flex gap-x-2 items-center">
+      <div className="flex gap-x-8 items-center">
         {user ? (
           <div className="relative">
             <button
@@ -216,7 +204,7 @@ export const NavBar = () => {
             )}
           </div>
         ) : (
-          <div className="text-lg font-light text-white">
+          <div className=" text-white font-semibold">
             <Link to="/login">{t("navbar.login")}</Link>
           </div>
         )}

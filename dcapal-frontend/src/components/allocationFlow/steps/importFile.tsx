@@ -25,6 +25,7 @@ import {
 } from "@components/allocationFlow/portfolioSlice";
 
 import IMPORT_PORTFOLIO_SVG from "@images/headers/import-portfolio.svg";
+import { Button } from "../../ui/atoms/button";
 
 const importPfolio = async (id, pfolio, validCcys, dispatch) => {
   const stopWithError = (...args) => {
@@ -178,12 +179,9 @@ export const ImportStep = () => {
               <span className="text-4xl">⚠️</span>
               {t("importStep.ops")}...
             </span>
-            <span
-              className="font-medium underline cursor-pointer"
-              onClick={onClickGoBack}
-            >
+            <Button variant="link" handleClick={onClickGoBack}>
               {t("common.goBack")}
-            </span>
+            </Button>
           </>
         )}
       </div>

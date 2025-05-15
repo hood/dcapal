@@ -25,8 +25,8 @@ import BAG from "@images/icons/bag.svg";
 import PIECHART from "@images/icons/piechart.svg";
 import { getFetcher } from "@app/providers";
 import { Trans, useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
 import { PreferencesDialog } from "./preferencesDialog";
+import { Button } from "../../../ui/atoms/button";
 
 const refreshAssetPrices = async (assets, quoteCcy, validCcys, dispatch, t) => {
   console.debug("Refreshing prices (", new Date(), ")");
@@ -182,12 +182,9 @@ export const PortfolioStep = ({ ...props }) => {
         })}
       </div>
       {Object.keys(assetStore).length === 0 && (
-        <span
-          className="mt-2 font-medium underline cursor-pointer"
-          onClick={onClickGoBack}
-        >
+        <Button className="mt-2" handleClick={onClickGoBack} variant="link">
           {t("common.goBack")}
-        </span>
+        </Button>
       )}
       {Object.keys(assetStore).length > 0 && (
         <div
@@ -263,10 +260,11 @@ export const PortfolioStep = ({ ...props }) => {
             {new Date(lastRefreshTime).toLocaleString(i18n.language)}
           </p>
           <div className="w-full mt-6 flex justify-between items-center">
-            <Button variant="link" size="link" onClick={onClickGoBack}>
-              {t("common.goBack")}
-            </Button>
-            <Button onClick={onClickAddLiquidity} disabled={!isAllAllocated}>
+            <Button handleClick={onClickGoBack}>{t("common.goBack")}</Button>
+            <Button
+              handleClick={onClickAddLiquidity}
+              disabled={!isAllAllocated}
+            >
               {t("common.next")}
             </Button>
           </div>

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
     :root {
@@ -27,18 +25,9 @@
     }
 }
 
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply font-sans antialiased bg-background text-foreground;
-    }
-}
-
 @layer components {
     .app-bg {
-        background-image: url(@images/stacked-wave-2.svg);
+        /* background-image: url(@images/stacked-wave-2.svg); */
         background-repeat: no-repeat;
         background-position: center top;
         transform: rotate(180deg);

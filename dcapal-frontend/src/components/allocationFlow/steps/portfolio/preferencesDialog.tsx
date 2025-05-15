@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/atoms/button";
 import { TransactionFees } from "./transactionFees";
 import { SlidersHorizontal } from "lucide-react";
 import { useTranslation } from "react-i18next";

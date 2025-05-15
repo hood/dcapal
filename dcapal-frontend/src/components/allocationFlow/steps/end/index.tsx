@@ -16,7 +16,7 @@ import {
   setQty,
 } from "@components/allocationFlow/portfolioSlice";
 import { AllocateCard } from "./allocateCard";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/atoms/button";
 
 export const UNALLOCATED_CASH = "Unallocated cash";
 

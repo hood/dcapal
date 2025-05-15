@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { PortfolioCard } from "./portfolioCard";
 import { useNavigate } from "react-router-dom";
-import { InputText } from "@components/core/inputText";
 import { CcyGroup } from "@components/allocationFlow/steps/ccy/ccyGroup";
 import {
   Step,
@@ -12,12 +11,13 @@ import {
 } from "@app/appSlice";
 import {
   addPortfolio,
+  duplicatePortfolio,
   getNewPortfolio,
   selectPortfolio,
 } from "@components/allocationFlow/portfolioSlice";
 import classNames from "classnames";
-import { Button } from "@/components/ui/button";
-import { supabase } from "@app/config";
+import { Button } from "../../../ui/atoms/button";
+import { InputText } from "../../../ui/atoms/input-text";
 
 export const PortfoliosStep = () => {
   const { t } = useTranslation();
@@ -25,6 +25,8 @@ export const PortfoliosStep = () => {
   const [showNewPfolio, setShowNewPfolio] = useState(
     Object.keys(pfolios).length === 0
   );
+
+  const dispatch = useDispatch();
 
   const pfoliosCount = Object.keys(pfolios).length;
 
@@ -47,25 +49,22 @@ export const PortfoliosStep = () => {
     <div className="w-full flex flex-col items-center">
       <div className="mt-2 mb-8 text-3xl font-light">{title}</div>
       <div className="w-full flex flex-col gap-5 items-center">
-        {Object.values(pfolios).map((p) => {
-          return (
-            <PortfolioCard
-              key={p.id}
-              id={p.id}
-              name={p.name}
-              ccy={p.quoteCcy}
-              totalAmount={p.totalAmount}
-              assets={Object.values(p.assets)}
-            />
-          );
-        })}
+        {Object.values(pfolios).map((p) => (
+          <PortfolioCard
+            key={p.id}
+            id={p.id}
+            name={p.name}
+            ccy={p.quoteCcy}
+            totalAmount={p.totalAmount}
+            assets={Object.values(p.assets)}
+          />
+        ))}
       </div>
       {!showNewPfolio && (
         <Button
           variant="link"
-          size="link"
           className="mt-5"
-          onClick={onClickNewPortfolio}
+          handleClick={onClickNewPortfolio}
         >
           {t("portfoliosStep.newPortfolio")}
         </Button>
@@ -153,27 +152,28 @@ const NewPortfolioForm = ({ pfoliosCount, cancelCb }) => {
     <div className="w-full flex flex-col gap-4">
       <div className="w-full flex flex-col gap-1">
         <label className="text-sm font-light">{t("common.name")}</label>
-        <InputText value={name} onChange={setName} isValid={true} />
+        <InputText
+          value={name}
+          handleChange={(e) => setName(e.target.value)}
+          isValid={isFormValid}
+        />
       </div>
       <div className="w-full flex flex-col gap-2">
         <label className="text-sm font-light">{t("common.currency")}</label>
-        <div>
-          <CcyGroup
-            ccys={sortedCcys}
-            selected={selectedCcy}
-            setSelected={setSelectedCcy}
-          />
-        </div>
+        <CcyGroup
+          ccys={sortedCcys}
+          selected={selectedCcy}
+          setSelected={setSelectedCcy}
+        />
       </div>
       <div className="w-full mt-6 flex justify-between items-center">
         <Button
           variant="link"
-          size="link"
-          onClick={pfoliosCount > 0 ? cancelCb : onClickGoBack}
+          handleClick={pfoliosCount > 0 ? cancelCb : onClickGoBack}
         >
           {t("common.cancel")}
         </Button>
-        <Button onClick={onClickNext} disabled={!isFormValid}>
+        <Button handleClick={onClickNext} disabled={!isFormValid}>
           {t("common.next")}
         </Button>
       </div>

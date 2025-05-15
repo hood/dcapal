@@ -8,8 +8,8 @@ import {
 } from "@components/allocationFlow/portfolioSlice";
 import { useTranslation } from "react-i18next";
 import { ignoreNullReplacer } from "@utils";
-import { Button } from "./ui/button";
 import { Save } from "lucide-react";
+import { Button } from "./ui/atoms/button";
 
 const pad = (n) => `${n}`.padStart(2, "0");
 
@@ -90,12 +90,7 @@ export const ExportBtn = () => {
   };
 
   return (
-    <Button
-      style={{ display: isDisplay ? "flex" : "none" }}
-      variant="outline"
-      size="icon"
-      onClick={onClick}
-    >
+    <Button style={{ display: isDisplay ? "flex" : "none" }} onClick={onClick}>
       <Save />
     </Button>
   );
